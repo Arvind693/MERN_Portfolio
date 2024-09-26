@@ -1,0 +1,118 @@
+.techstack-container {
+    padding-left: 150px;
+    margin-top: 40px;
+}
+
+.techstack-container hr {
+    color: #138781;
+    width: 40rem;
+    margin: 10px auto;
+}
+
+.techstack-container h2 {
+    color: #138781;
+    font-weight: bold;
+}
+.techStcks-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap :2rem
+}
+.techStack-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    background-color: white;
+}
+.techStack-content:hover {
+    cursor: pointer;
+    background-color:white;
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+.tech-image {
+    margin-top: -10px;
+    margin-right: 10px;
+    font-size: 25px;
+    color: rgb(11, 122, 113);
+}
+.tech-image img{
+    width: 30px;
+}
+
+.media-body h5 {
+    color: #138781;
+}
+
+/* DARK MODE */
+
+#dark .card-content {
+    box-shadow: 0px 0px 7px 2px white;
+}
+
+/* Responsive css */
+@media (max-width:600px){
+    .techstack-container {
+        padding-left: 0px;
+        padding: 10px;
+        margin-top: 0;
+    }
+    
+    .techstack-container hr {
+        color: #138781;
+        width: 10rem;
+        margin: 10px auto;
+    }
+    
+    .techstack-container h2 {
+        font-size: 15px;
+        color: #138781;
+        font-weight: bold;
+    }
+    .techstack-container p{
+        font-size: 10px;
+        margin: 0px 20px 0px 20px;
+    }
+    .techStcks-row{
+        display: grid;
+        grid-template-columns:1fr 1fr;
+        gap :0.5rem
+    }
+    .tech-image {
+        margin-top: -10px;
+        margin-right: 10px;
+        font-size: 25px;
+        color: rgb(11, 122, 113);
+    }
+    .tech-image img{
+        width: 18px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+    }
+    
+    .media-body h5 {
+        padding-right: 10px;
+        padding: 0;
+        color: #138781;
+        font-size: 12px;
+    }
+    
+    .techStack-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 10px 0px 5px;
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        background-color: white;
+    }
+}

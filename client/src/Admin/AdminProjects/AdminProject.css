@@ -1,0 +1,32 @@
+.projects-grid-container {
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;;
+    padding: 10px;
+    gap: 1rem;
+}
+
+.project-container {
+    width: 100%;
+    padding: 10px 10px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width:600px){
+    .projects-grid-container{
+        grid-template-columns: 1fr 1fr;
+    }
+    .education-modal-content h3{
+        font-size: 15px;
+    }
+    .form-data textarea{
+        font-size: 10px;
+    }
+}

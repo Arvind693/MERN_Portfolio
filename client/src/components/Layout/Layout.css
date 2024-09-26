@@ -1,0 +1,34 @@
+.sidebar-section{
+    display: flex;
+    background-color: black;
+}
+.sidebar{
+    height: 100vh;
+    background-color: #1e1e2c;
+    width: 90px;
+    position: fixed;
+}
+.sidebar-toggle{
+    width: 170px;
+    height: 100vh;
+    background-color: #1e1e2c;
+    position: fixed;
+}
+.sidebar-toggle-icons{
+    display: flex;
+    align-items:right;
+    justify-content: right;
+    cursor: pointer;
+}
+.sidebar-toggle-icons p svg{
+    color: white;
+    margin-top: 10px;
+}
+
+/* Responsive design for phones */
+
+@media (max-width:600px){
+    .sidebar-section{
+        display:none;
+    }
+}

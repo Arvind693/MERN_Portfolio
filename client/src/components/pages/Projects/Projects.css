@@ -1,0 +1,299 @@
+/* container for all projects */
+.projects-container {
+    padding-left: 150px;
+    margin-top: 40px;
+}
+
+/* Heading for the projects section */
+.projects-heading {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #138781;
+}
+
+.projects-container hr {
+    color: #138713;
+    width: 400px;
+    margin: 10px auto;
+}
+
+.projects-caption {
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Grid layout for the project cards */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+/* Individual project card */
+.project-card {
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.7);
+    margin: 20px 10px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+
+}
+
+.project-details {
+    margin-top: 1rem;
+}
+
+.project-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #138781;
+}
+
+.project-description {
+    margin: 10px;
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #777;
+}
+
+.project-technologies {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    margin-left: 15px;
+    color: #777;
+}
+
+.project-links {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.project-link {
+    background-color: #138781;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.project-link:hover {
+    background-color: #0e6661;
+}
+
+#ads .card-notify-badge {
+    position: absolute;
+    left: -10px;
+    top: -20px;
+    background: #f29f67;
+    text-align: center;
+    border-radius: 30px;
+    color: black;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.project-img {
+    width: 100%;
+}
+
+.card-detail-badge {
+    background-color: #138781;
+    text-align: center;
+    border-radius: 30px;
+    padding: 0px 10px;
+    margin: 5px;
+    color: black;
+    font-size: 12px;
+}
+
+.card-image-overly span {
+    display: inline-block;
+    margin-left: 5px;
+    color: white;
+}
+
+.ad-title h5 {
+    color: #f29f67;
+}
+
+.ad-btn {
+    text-decoration: none;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    color: white;
+    background-color: gray;
+    margin: 0px 10px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Respomsive css */
+@media (max-width:600px) {
+    .projects-container {
+        padding-left: 5px;
+        margin-top: 5px;
+    }
+
+    /* Heading for the projects section */
+    .projects-heading {
+        font-size: 15px;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        color: #138781;
+    }
+
+    .projects-container hr {
+        color: #138713;
+        width: 200px;
+        margin-top: -20px;
+    }
+
+    .projects-caption {
+        text-align: center;
+        font-size: 10px;
+        margin: 0px 10px 0px 10px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns:1fr;
+        gap: 0rem;
+    }
+
+    /* Individual project card */
+    .project-card {
+        box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.7);
+        margin: 20px 10px;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.2s;
+    }
+
+    .project-image {
+        width: 100%;
+        /* height: 200px; */
+        border-radius: 10px;
+
+    }
+
+    .project-details {
+        margin-top: 1rem;
+    }
+
+    .project-title {
+        font-size:15px;
+        margin-bottom: 0.2rem;
+    }
+
+    .project-description {
+        margin: 10px;
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+
+    .project-technologies {
+        font-size: 10px;
+        margin: 0px 5px 0px 2px;
+        padding:0px 5px 5px 5px ;
+    }
+
+    .project-links {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+    }
+
+    .project-link {
+        background-color: #138781;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.2s;
+    }
+
+    .project-link:hover {
+        background-color: #0e6661;
+    }
+
+    #ads .card-notify-badge {
+        position: absolute;
+        left: -10px;
+        top: -20px;
+        background: #f29f67;
+        text-align: center;
+        border-radius: 30px;
+        color: black;
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    .project-img {
+        width: 100%;
+    }
+
+    .card-detail-badge {
+        background-color: #138781;
+        text-align: center;
+        border-radius: 30px;
+        padding: 0px 10px;
+        margin: 5px;
+        color: black;
+        font-size: 12px;
+    }
+
+    .card-image-overly span {
+        display: inline-block;
+        margin-left: 5px;
+        color: white;
+    }
+
+    .ad-title h5 {
+        color: #f29f67;
+    }
+
+    .ad-btn {
+        text-decoration: none;
+        padding: 3px 10px;
+        border-radius: 5px;
+        font-weight: 600;
+        color: white;
+        background-color: gray;
+        margin: 0px 10px;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}

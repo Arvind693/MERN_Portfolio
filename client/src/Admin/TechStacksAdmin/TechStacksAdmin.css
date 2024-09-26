@@ -1,0 +1,110 @@
+.skills-grid-container {
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;;
+    padding: 10px;
+    gap: 1rem;
+}
+
+.skills-container {
+    width: 100%;
+    padding: 10px 10px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.7);
+}
+
+/* Css for popUp form */
+.skill-modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.84)
+}
+
+.skill-modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #0e6b63;
+}
+
+/* Styles for the submit button in the modal */
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #138781;
+    /* Primary button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+.modal-content button:hover {
+    background-color: #0e6b63;
+    /* Darker shade on hover */
+}
+
+.add-skill-box {
+    width: 50px;
+    height: 50px;
+    position:fixed;
+    right: 20px;
+    top: 80px;
+    text-align: center;
+    background-color: rgb(116, 67, 6);
+    border-radius: 50%;
+    font-size: 30px;
+    color: rgb(236, 241, 245);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.7);
+}
+
+.add-skill-box:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+.tech-icon img{
+    margin-top: 10px;
+    width: 50px;
+}
+
+@media (max-width:600px){
+    .skills-grid-container {
+        display: grid;
+        grid-template-columns:1fr 1fr;
+        place-items: center;;
+        padding: 10px;
+        gap: 1rem;
+    }
+    
+}

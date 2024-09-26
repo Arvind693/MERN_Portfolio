@@ -1,0 +1,26 @@
+/* CSS reset */
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgb(206, 205, 205);
+}
+
+/* Dark mode */
+#dark{
+  background-color: black;
+  color: #f4eee0;
+}
+
+/* for mobile responsive */
+@media (max-width:600px){
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+}
