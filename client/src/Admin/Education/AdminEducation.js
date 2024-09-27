@@ -21,7 +21,7 @@ const AdminEducation = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const portfolioData = await axios.get('http://localhost:5000/api/portfolio/get-portfolio-data');
+        const portfolioData = await axios.get(`${window.location.origin}/api/portfolio/get-portfolio-data`);
         setEducationData(portfolioData.data.education);
         setLoading(false);
       } catch (error) {
@@ -44,7 +44,7 @@ const AdminEducation = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/api/portfolio/addNewEducation', {
+      await axios.post(`${window.location.origin}/api/portfolio/addNewEducation`, {
         title,
         institute,
         date,
@@ -61,7 +61,7 @@ const AdminEducation = () => {
   // Delete the education data
   const removeEducation = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/portfolio/removeEducation/${id}`);
+      await axios.delete(`${window.location.origin}/api/portfolio/removeEducation/${id}`);
       alert("Education data removed successfully!");
       window.location.reload();
     } catch (error) {
@@ -85,7 +85,7 @@ const AdminEducation = () => {
 
     const fetchEducation = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/portfolio/getEducation/${idForUpdate}`);
+        const response = await axios.get(`${window.location.origin}/api/portfolio/getEducation/${idForUpdate}`);
         const education = response.data;
         setTitle(education.title);
         setInstitute(education.institute);
@@ -109,7 +109,7 @@ const AdminEducation = () => {
       link,
     };
     try {
-      await axios.put(`http://localhost:5000/api/portfolio/updateEducation/${idForUpdate}`, updatedEducation, {
+      await axios.put(`${window.location.origin}/api/portfolio/updateEducation/${idForUpdate}`, updatedEducation, {
         headers: {
           "Content-Type": "application/json"
         }

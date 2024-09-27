@@ -13,7 +13,7 @@ const AdminAbout = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const portfolioData = await axios.get('http://localhost:5000/api/portfolio/get-portfolio-data');
+        const portfolioData = await axios.get(`${window.location.origin}/api/portfolio/get-portfolio-data`);
         const { description, image } = portfolioData.data.about;
         setDescription(description);
         setImage(image);
@@ -30,7 +30,7 @@ const AdminAbout = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put('http://localhost:5000/api/portfolio/updateAboutData', {
+      await axios.put(`${window.location.origin}/api/portfolio/updateAboutData`, {
         description,
         image
       });

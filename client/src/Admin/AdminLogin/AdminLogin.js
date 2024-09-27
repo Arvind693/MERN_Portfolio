@@ -13,7 +13,7 @@ const AdminLogin = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/portfolio/admin-login', user);
+            const response = await axios.post(`${window.location.origin}/api/portfolio/admin-login`, user);
             if (response.data.success) {
                 message.success(response.data.message);
                 localStorage.setItem('token', JSON.stringify(response.data));
@@ -38,7 +38,7 @@ const AdminLogin = () => {
     }
     const signUp= async()=>{
         try {
-            const response = await axios.post('http://localhost:5000/api/portfolio/addNewUser',user);
+            const response = await axios.post(`${window.location.origin}/api/portfolio/addNewUser`,user);
             if(response.data.success){
                 message.success(response.data.message);
                 setUser({

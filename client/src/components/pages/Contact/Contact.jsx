@@ -19,7 +19,7 @@ const Contact = () => {
         setIsLoading(true); // Start loading
 
         try {
-            const response = await axios.post('http://localhost:5000/api/portfolio/contact', {
+            const response = await axios.post(`${window.location.origin}/api/portfolio/contact`, {
                 name,
                 email,
                 message

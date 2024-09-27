@@ -12,7 +12,7 @@ const Home = () => {
     useEffect(()=>{
         const fetchData = async()=>{
             try {
-                const response = await axios.get('/api/portfolio/get-portfolio-data');
+                const response = await axios.get(`${window.location.origin}/api/portfolio/get-portfolio-data`);
                 setIntro(response.data.intro)
                 
             } catch (error) {

@@ -7,7 +7,7 @@ const Projects = () => {
     useEffect(()=>{
         const fetchData = async()=>{
             try {
-                const response = await axios.get('http://localhost:5000/api/portfolio/get-portfolio-data');
+                const response = await axios.get(`${window.location.origin}/api/portfolio/get-portfolio-data`);
                 setProjects(response.data.project)
             } catch (error) {
                 
@@ -28,7 +28,7 @@ const Projects = () => {
       <div className="projects-grid">
         {projects.map((project, index) => (
           <div className="project-card">
-            <img src={`http://localhost:5000/projectsThumbnail/${project.thumbnail}`}alt="project_img" className='project-image' />
+            <img src={`${window.location.origin}/projectsThumbnail/${project.thumbnail}`}alt="project_img" className='project-image' />
             <div className="project-details">
               <h3 className="project-title">{project.title}</h3>
               <p className="project-description">{project.description}</p>

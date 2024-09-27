@@ -14,7 +14,7 @@ const AdminIntro = () => {
   useEffect(() => {
     const getIntroData = async () => {
       try {
-        const portfolioData = await axios.get('http://localhost:5000/api/portfolio/get-portfolio-data');
+        const portfolioData = await axios.get(`${window.location.origin}/api/portfolio/get-portfolio-data`);
         const { welcomeText, name, caption, resume } = portfolioData.data.intro;
         setWelcomeText(welcomeText);
         setName(name);
@@ -41,7 +41,7 @@ const AdminIntro = () => {
         // Only append the image if a new file is selected
         formData.append('resume', resume);
       }
-      axios.put('http://localhost:5000/api/portfolio/updateIntroData', formData, {
+      axios.put(`${window.location.origin}/api/portfolio/updateIntroData`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data', // Set the correct header
         }
