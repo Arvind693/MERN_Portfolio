@@ -19,7 +19,7 @@ const TechStacksAdmin = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${window.location.origin}/api/portfolio/get-portfolio-data`);
+                const response = await axios.get(`http://localhost:5000/api/portfolio/get-portfolio-data`);
                 setSkillData(response.data.techStack);
                 setLoading(false);
             } catch (error) {
@@ -50,7 +50,7 @@ const TechStacksAdmin = () => {
         if (!idForUpdate) return;
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${window.location.origin}/api/portfolio/getSkills/${idForUpdate}`);
+                const response = await axios.get(`http://localhost:5000/api/portfolio/getSkills/${idForUpdate}`);
                 setSkillName(response.data.name);
                 setSkillsIcon(response.data.icon);
                 setLoading(false);
@@ -71,7 +71,7 @@ const TechStacksAdmin = () => {
                 formData.append('icon', skillsIcon);
             }
 
-            const response = await axios.put(`${window.location.origin}/api/portfolio/updateSkills/${idForUpdate}`, formData, {
+            const response = await axios.put(`http://localhost:5000/api/portfolio/updateSkills/${idForUpdate}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -86,7 +86,7 @@ const TechStacksAdmin = () => {
     // Handle Delete
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`${window.location.origin}/api/portfolio/removeSkill/${id}`);
+            await axios.delete(`http://localhost:5000/api/portfolio/removeSkill/${id}`);
             window.location.reload();
         } catch (error) {
             console.log('Failed to delete TechStacks');
@@ -107,7 +107,7 @@ const TechStacksAdmin = () => {
         formData.append('icon', skillsIcon);
 
         try {
-            const response = await axios.post(`${window.location.origin}/api/portfolio/addNewSkill`, formData);
+            const response = await axios.post(`http://localhost:5000/api/portfolio/addNewSkill`, formData);
             if (response.status === 200) {
                 alert("Skill Added Successfully");
                 window.location.reload();
@@ -135,7 +135,7 @@ const TechStacksAdmin = () => {
                         {skillData.map((skills) => (
                             <div className='skills-container' key={skills._id}>
                                 <div className='tech-icon'>
-                                    <img src={`${window.location.origin}/skillsIcons/${skills.icon}`} alt={skills.name} />
+                                    <img src={`http://localhost:5000/skillsIcons/${skills.icon}`} alt={skills.name} />
                                 </div>
                                 <div className="media-body">
                                     <h5>{skills.name}</h5>

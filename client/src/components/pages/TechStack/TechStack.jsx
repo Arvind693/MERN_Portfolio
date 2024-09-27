@@ -8,7 +8,7 @@ const TechStack = () => {
     useEffect(()=>{
         const fetchData = async()=>{
             try {
-                const response = await axios.get(`${window.location.origin}/api/portfolio/get-portfolio-data`);
+                const response = await axios.get(`http://localhost:5000/api/portfolio/get-portfolio-data`);
                 setTechStacks(response.data.techStack)
             } catch (error) {
                 
@@ -28,7 +28,7 @@ const TechStack = () => {
                     {techStacks.map((ele) => (
                         <div className="techStack-content">
                             <div className='tech-image'>
-                                <img src={`${window.location.origin}/skillsIcons/${ele.icon}`} alt="icon" />
+                                <img src={`http://localhost:5000/skillsIcons/${ele.icon}`} alt="icon" />
                             </div>
                             <div className="media-body">
                                 <h5>{ele.name}</h5>
