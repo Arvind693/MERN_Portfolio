@@ -1,6 +1,0 @@
-.env
-node_modules
-# Ignore all png files except in public folder
-*.png
-!/public/projectsThumbnail/*.png
-!/public/skillsIcons/*.png
