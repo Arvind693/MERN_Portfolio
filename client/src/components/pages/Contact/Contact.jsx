@@ -11,7 +11,7 @@ const Contact = () => {
     const [message, setMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
-    const [fieldError,setFieldError] = useState('');
+    const [fieldError, setFieldError] = useState('');
     // console.log(name,email,message);
 
     const handleSubmit = async (e) => {
@@ -24,7 +24,7 @@ const Contact = () => {
                 email,
                 message
             });
-            if (response.status === 200) { 
+            if (response.status === 200) {
                 setSuccessMessage('');
                 setFieldError(response.data.msg);
             }
@@ -62,20 +62,23 @@ const Contact = () => {
                         <div className="col-lg-6 col-md-6">
                             <div className="card2 d-flex card border-0 px-4 py-3">
                                 <div className="row contact-second-div">
-                                    <div className="row">
-                                        <h6>Contact With Us
-                                            <BsLinkedin className='linkedin-icon' />
-                                            <FcGoogle className='google-icon' />
-                                            <BsGithub className='github-icon' />
-                                            <ImFacebook2 className='facebook-icon' />
-                                        </h6>
+                                    <div className="row row-contact">
+                                        <h6>Contact With Us</h6>
+                                        <h5>
+                                            <a href="https://www.linkedin.com/in/arvind-kumar-119b31201/" target="_blank" rel="noopener noreferrer">
+                                                <BsLinkedin className='linkedin-icon media-icon' />
+                                            </a>
+                                            <a href="https://github.com/Arvind693" target="_blank" rel="noopener noreferrer">
+                                                <BsGithub className='github-icon media-icon' />
+                                            </a>
+                                        </h5>
                                     </div>
                                     <div className="row px-3 mb-4 or-line">
                                         <div className='line' />
-                                        <small className="or text-center">OR</small>
+                                        <div className="or text-center">OR</div>
                                         <div className='line' />
                                     </div>
-                                    <div className="row px-3">
+                                    <div className="row px-3 contact-input">
                                         <input type="text" name='name' value={name} placeholder='Write your name' className='mb-3' onChange={(e) => setName(e.target.value)} />
                                         <input type="email" name='email' value={email} placeholder='Email' className='mb-3' onChange={(e) => setEmail(e.target.value)} />
                                         <textarea type="text" name='msg' value={message} placeholder='Write your message' className='mb-3' onChange={(e) => setMessage(e.target.value)} />
@@ -86,9 +89,9 @@ const Contact = () => {
                                         </button>
                                     </div>
                                     <div className="isSuccessMessage-container">
-                                        {successMessage && <p style={{'color':'green'}}>{successMessage}</p>}
-                                        {fieldError && <p style={{'color':'red'}}>{fieldError}</p>}
-                                    
+                                        {successMessage && <p style={{ 'color': 'green' }}>{successMessage}</p>}
+                                        {fieldError && <p style={{ 'color': 'red' }}>{fieldError}</p>}
+
                                     </div>
                                 </div>
                             </div>

@@ -4,12 +4,14 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { IoMdArrowRoundBack } from "react-icons/io";
 import BouncingLoader from '../../Loader/Loader';
+import { message } from 'antd';
 const AdminIntro = () => {
   const [welcomeText, setWelcomeText] = useState('');
   const [name, setName] = useState('');
   const [caption, setCaption] = useState('');
   const [resume, setResume] = useState();
   const [loading, setLoading] = useState(true);  // Add loading state
+  const [buttonLoader, setButtonLoader] = useState(false);
 
   useEffect(() => {
     const getIntroData = async () => {
@@ -30,6 +32,7 @@ const AdminIntro = () => {
 
   const updateInroData = async (e) => {
     e.preventDefault();
+    setButtonLoader(true);
     try {
       const formData = new FormData();
 
@@ -46,8 +49,10 @@ const AdminIntro = () => {
           'Content-Type': 'multipart/form-data', // Set the correct header
         }
       });
-      alert("User Updated successfully")
-      // window.location.reload();
+      message.success("Intro Updated Successfully", 2)
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       console.log("Failed to upadte the Inro Data");
     }

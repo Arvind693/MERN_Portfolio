@@ -28,7 +28,13 @@
     width: 30%;
     font-size: 20px;
 }
-
+.btn-div button{
+    background-color: rgb(44, 180, 114);
+    color: white;
+}
+.btn-div button:hover{
+    background-color: rgb(20, 113, 68);
+}
 @media (max-width:600px){
     .admin-about-container{
         width: 100%;

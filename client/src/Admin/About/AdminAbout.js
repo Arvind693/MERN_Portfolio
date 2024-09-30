@@ -4,11 +4,14 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { IoMdArrowRoundBack } from "react-icons/io";
 import BouncingLoader from '../../Loader/Loader';
+import { message } from 'antd';
+import { Navigate } from 'react-router-dom';
 
 const AdminAbout = () => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
   const [loading, setLoading] = useState(true);  // Add loading state
+  const [buttonLoader, setButtonLoader] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -28,13 +31,17 @@ const AdminAbout = () => {
   }, []);
 
   const handleUpdate = async (e) => {
+    setButtonLoader(true);
     e.preventDefault();
     try {
       await axios.put(`${window.location.origin}/api/portfolio/updateAboutData`, {
         description,
         image
       });
-      alert("About Updated Successful")
+      message.success("About data Updated Successfully", 2)
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -60,7 +67,7 @@ const AdminAbout = () => {
               <input type="text" value={image} onChange={(e) => setImage(e.target.value)} />
             </div>
             <div className="btn-div">
-              <button onClick={handleUpdate}>Update</button>
+              <button onClick={handleUpdate} disabled={buttonLoader}>{buttonLoader?"Updating":"Update"}</button>
             </div>
           </div>
         </div>

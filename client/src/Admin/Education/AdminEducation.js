@@ -5,6 +5,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import { FaRegWindowClose } from "react-icons/fa";
 import BouncingLoader from '../../Loader/Loader';
+import { message } from 'antd';
 
 const AdminEducation = () => {
   const [educationData, setEducationData] = useState([]);
@@ -16,6 +17,7 @@ const AdminEducation = () => {
   const [link, setLink] = useState('');
   const [idForUpdate, setIdForUpdate] = useState('');
   const [loading, setLoading] = useState(true);  // Add loading state
+  const [buttonLoader, setButtonLoader] = useState(false);
 
   // Get the education data from MongoDB when the component mounts
   useEffect(() => {
@@ -42,6 +44,7 @@ const AdminEducation = () => {
   // Post new education data to MongoDB
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setButtonLoader(true);
 
     try {
       await axios.post(`${window.location.origin}/api/portfolio/addNewEducation`, {
@@ -50,9 +53,11 @@ const AdminEducation = () => {
         date,
         link,
       });
-      alert("Education data added successfully 🥰");
-      setopenAddForm(false);
-      window.location.reload(); // Reload to reflect the new data
+      message.success("Education Added Successfully 🥰", 2);
+      setTimeout(() => {
+        setopenAddForm(false);
+        window.location.reload(); // Reload to reflect the new data
+      }, 2000);
     } catch (error) {
       console.log("Failed to add the new education data!");
     }
@@ -62,7 +67,7 @@ const AdminEducation = () => {
   const removeEducation = async (id) => {
     try {
       await axios.delete(`${window.location.origin}/api/portfolio/removeEducation/${id}`);
-      alert("Education data removed successfully!");
+      message.success("Education data removed successfully!", 2);
       window.location.reload();
     } catch (error) {
       console.log("Error deleting the education data");
@@ -102,6 +107,7 @@ const AdminEducation = () => {
   // Update education data
   const handleUpdate = async (e) => {
     e.preventDefault();
+    setButtonLoader(true);
     const updatedEducation = {
       title,
       institute,
@@ -114,9 +120,11 @@ const AdminEducation = () => {
           "Content-Type": "application/json"
         }
       });
-      alert("Updated Successfully");
-      setOpenUpdateForm(false);
-      window.location.reload();
+      message.success("Education Updated Successfully", 2);
+      setTimeout(() => {
+        setOpenUpdateForm(false);
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -170,7 +178,7 @@ const AdminEducation = () => {
                       Certificate Link:
                       <input type="text" value={link} onChange={(e) => setLink(e.target.value)} required />
                     </label>
-                    <button type="submit">Submit</button>
+                    <button type="submit" disabled={buttonLoader}>{buttonLoader?"Adding":"Add"}</button>
                   </form>
                 </div>
               </div>
@@ -199,7 +207,7 @@ const AdminEducation = () => {
                       Certificate Link:
                       <input type="text" value={link} onChange={(e) => setLink(e.target.value)} required />
                     </label>
-                    <button type="submit">Update</button>
+                    <button type="submit" disabled={buttonLoader}>{buttonLoader?"Updating...":"Update"}</button>
                   </form>
                 </div>
               </div>

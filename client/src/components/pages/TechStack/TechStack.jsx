@@ -25,13 +25,13 @@ const TechStack = () => {
                     and APIs
                 </p>
                 <div className="techStcks-row">
-                    {techStacks.map((ele) => (
+                    {techStacks.map((skills) => (
                         <div className="techStack-content">
                             <div className='tech-image'>
-                                <img src={`http://localhost:5000/skillsIcons/${ele.icon}`} alt="icon" />
+                                <img src={`https://res.cloudinary.com/drbe1wmf4/image/upload/v1727673442/${skills.icon}`} alt="icon" />
                             </div>
                             <div className="media-body">
-                                <h5>{ele.name}</h5>
+                                <h5>{skills.name}</h5>
                             </div>
 
                         </div>

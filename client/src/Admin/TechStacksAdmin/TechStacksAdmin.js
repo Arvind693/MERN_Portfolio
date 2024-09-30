@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { IoMdArrowRoundBack } from "react-icons/io";
 import axios from 'axios';
 import BouncingLoader from '../../Loader/Loader';
+import { message } from 'antd';
 
 const TechStacksAdmin = () => {
     const [skillData, setSkillData] = useState([]);
@@ -14,6 +15,7 @@ const TechStacksAdmin = () => {
     const [addPopUpForm, setAddPopUpForm] = useState(false);
     const [idForUpdate, setIdForUpdate] = useState('');
     const [loading, setLoading] = useState(true);
+    const [buttonLoader, setButtonLoader] = useState(false);
 
     // Fetch skills data from portfolio data
     useEffect(() => {
@@ -63,6 +65,7 @@ const TechStacksAdmin = () => {
 
     const handleUpdate = async (e) => {
         e.preventDefault();
+        setButtonLoader(true);
 
         try {
             const formData = new FormData();
@@ -76,8 +79,11 @@ const TechStacksAdmin = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            alert(response.data.msg);
-            window.location.reload();
+            message.success("Skill Updated Successfully",2)
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+            
         } catch (error) {
             console.log(error);
         }
@@ -87,7 +93,10 @@ const TechStacksAdmin = () => {
     const handleDelete = async (id) => {
         try {
             await axios.delete(`http://localhost:5000/api/portfolio/removeSkill/${id}`);
-            window.location.reload();
+            message.success("Skill Updated Successfully",2)
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
         } catch (error) {
             console.log('Failed to delete TechStacks');
         }
@@ -102,6 +111,8 @@ const TechStacksAdmin = () => {
     const handleUpload = async (e) => {
         e.preventDefault();
 
+        setButtonLoader(true);
+
         const formData = new FormData();
         formData.append('name', skillName);
         formData.append('icon', skillsIcon);
@@ -109,8 +120,10 @@ const TechStacksAdmin = () => {
         try {
             const response = await axios.post(`http://localhost:5000/api/portfolio/addNewSkill`, formData);
             if (response.status === 200) {
-                alert("Skill Added Successfully");
-                window.location.reload();
+                message.success("Skill Added Successfully",2)
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
             } else {
                 console.log("Unexpected response:", response);
             }
@@ -135,7 +148,7 @@ const TechStacksAdmin = () => {
                         {skillData.map((skills) => (
                             <div className='skills-container' key={skills._id}>
                                 <div className='tech-icon'>
-                                    <img src={`http://localhost:5000/skillsIcons/${skills.icon}`} alt={skills.name} />
+                                    <img src={`https://res.cloudinary.com/drbe1wmf4/image/upload/v1727673442/${skills.icon}`} alt={skills.name} />
                                 </div>
                                 <div className="media-body">
                                     <h5>{skills.name}</h5>
@@ -162,7 +175,9 @@ const TechStacksAdmin = () => {
                                             Upload Icon:
                                             <input type="file" onChange={(e) => setSkillsIcon(e.target.files[0])} required />
                                         </label>
-                                        <button type="submit">Add</button>
+                                        <button type="submit" disabled={buttonLoader}>{
+                                            buttonLoader? "Adding..." : "Add"
+                                        }</button>
                                     </form>
                                 </div>
                             </div>
@@ -183,7 +198,9 @@ const TechStacksAdmin = () => {
                                             Upload Icon:
                                             <input type="file" onChange={(e) => setSkillsIcon(e.target.files[0])} />
                                         </label>
-                                        <button type="submit">Submit</button>
+                                        <button type="submit" disabled={buttonLoader}>{
+                                            buttonLoader? "Updating..." : "Update"
+                                        }</button>
                                     </form>
                                 </div>
                             </div>

@@ -3,7 +3,7 @@ const app = express();
 require('dotenv').config();
 const cors = require('cors');
 const path = require('path');
-const dbConfig = require("./config/dbConfig");
+const connectDB = require("./config/dbConfig");
 const portfolioRoute = require('./routes/portfolioRoute');
 // const __dirname = path.resolve();
 
@@ -16,6 +16,10 @@ app.use('/skillsIcons', express.static(path.join(__dirname, 'routes/public/skill
 app.use('/projectsThumbnail', express.static(path.join(__dirname, 'routes/public/projectsThumbnail')));
 
 app.use("/api/portfolio", portfolioRoute);
+
+// connect with mongodb
+connectDB();
+
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/build")));

@@ -29,7 +29,7 @@ const MobileNav = () => {
                     <div className="mobile-nav-header" onClick={toggleClassBtn}>
                         <IoMenu size={30} />
                     </div>
-                    <h3>Portfolio</h3>
+                    <h3>Arvind’s Hub</h3>
                     <div className="theme-btn-mobile" onClick={handleTheme}>
                         {theme === 'light' ? <RiMoonClearFill size={30} /> : <IoSunny size={30} />}
                     </div>

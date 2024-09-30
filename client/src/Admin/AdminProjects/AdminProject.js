@@ -5,6 +5,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { FaRegWindowClose } from "react-icons/fa";
 import axios from 'axios';
 import BouncingLoader from '../../Loader/Loader';
+import { message } from 'antd';
 
 const AdminProject = () => {
     const [loading, setLoading] = useState(true);  // Add loading state
@@ -19,6 +20,7 @@ const AdminProject = () => {
     const [addPopUpForm, setAddPopUpForm] = useState(false);
     const [idForUpdate, setIdForUpdate] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [buttonLoader , setButtonLoader] = useState(false);
 
     // Fetch project data from the server
     useEffect(() => {
@@ -71,6 +73,7 @@ const AdminProject = () => {
     // Handle update form submission
     const handleUpdate = async (e) => {
         e.preventDefault(); // Prevent default form submission
+        setButtonLoader(true);
         try {
             const formData = new FormData();
             formData.append('title', title);
@@ -87,9 +90,11 @@ const AdminProject = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            alert(response.data.msg);
-            clearForm();
-            window.location.reload();
+            message.success("Project Updated Successfully", 2)
+            setTimeout(() => {
+                clearForm();
+                window.location.reload();
+            }, 2000);
         } catch (error) {
             console.log("Error updating project", error);
         }
@@ -99,7 +104,10 @@ const AdminProject = () => {
     const handleDelete = async (id) => {
         try {
             await axios.delete(`http://localhost:5000/api/portfolio/removeProject/${id}`);
-            window.location.reload();
+            message.success("Project Deleted Successfully",2)
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
         } catch (error) {
             console.log('Failed to delete TechStacks');
         }
@@ -109,6 +117,7 @@ const AdminProject = () => {
     const handleAddProject = () => {
         clearForm();
         setAddPopUpForm(true);
+        setButtonLoader(true);
     };
     const handleUpload = async () => {
         // Create a FormData object
@@ -129,9 +138,10 @@ const AdminProject = () => {
 
             // Handle successful response
             if (response.status === 200) {
-                console.log("Project added successfully:", response.data);
-                alert("Project Added Successefully");
-                window.location.reload();
+                message.success("Project Added Successfully", 2)
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
             }
         } catch (error) {
             if (error.response && error.response.status === 400) {
@@ -161,7 +171,7 @@ const AdminProject = () => {
                         {projectData.map((project) => (
                             <div className='project-container'>
                                 <div className='tech-icon'>
-                                    <img src={`http://localhost:5000/projectsThumbnail/${project.thumbnail}`} alt="" />
+                                    <img src={`https://res.cloudinary.com/drbe1wmf4/image/upload/v1727673442/${project.thumbnail}`} alt="" />
                                 </div>
                                 <div className="media-body">
                                     <h2>{project.title}</h2>
@@ -204,7 +214,7 @@ const AdminProject = () => {
                                             Thumbnail:
                                             <input type="file" onChange={(e) => setThumbnail(e.target.files[0])} />
                                         </label>
-                                        <button onClick={handleUpload}>Add</button>
+                                        <button onClick={handleUpload} disabled={buttonLoader}>{buttonLoader?"Adding...":"Add"}</button>
                                         {successMessage && (
                                             <p style={{ 'color': 'red', 'fontSize': '20px', fontWeight: '600' }}>{successMessage}</p>
                                         )}
@@ -245,7 +255,7 @@ const AdminProject = () => {
                                             Thumbnail:
                                             <input type="file" onChange={(e) => setThumbnail(e.target.files[0])} />
                                         </label>
-                                        <button type="submit">Update</button>
+                                        <button onClick={handleUpload} disabled={buttonLoader}>{buttonLoader?"Updating...":"Update"}</button>
                                     </form>
                                 </div>
                             </div>

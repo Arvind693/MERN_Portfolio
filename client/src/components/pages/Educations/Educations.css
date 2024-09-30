@@ -135,5 +135,7 @@
     .vertical-timeline::before {
         display: none;
     }
-
+    #dark .vertical-timeline-element-date {
+        color: black;
+    }
 }
