@@ -196,11 +196,11 @@ const AdminProject = () => {
                                         </label>
                                         <label>
                                             Description:
-                                            <input type="text" onChange={(e) => setDescription(e.target.value)} />
+                                            <textarea type="text" onChange={(e) => setDescription(e.target.value)} />
                                         </label>
                                         <label>
                                             Technologies:
-                                            <input type="text" onChange={(e) => setTechnologies(e.target.value)} />
+                                            <textarea type="text" onChange={(e) => setTechnologies(e.target.value)} />
                                         </label>
                                         <label>
                                             Live link:
@@ -237,7 +237,7 @@ const AdminProject = () => {
                                         </label>
                                         <label>
                                             Description:
-                                            <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+                                            <textarea type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
                                         </label>
                                         <label>
                                             Technologies:
