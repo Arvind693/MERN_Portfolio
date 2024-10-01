@@ -241,7 +241,7 @@ const updateAboutData = async (req, res) => {
 //update the intro data
 const updateIntroData = async (req, res) => {
     const { welcomeText, name, caption,resume } = req.body;
-    
+    console.log(welcomeText,name,caption,resume)
     try {
         const updateData = await Intro.findOneAndUpdate(
             {},// Empty object finds the first document
@@ -252,9 +252,9 @@ const updateIntroData = async (req, res) => {
         if (!updateData) {
             res.status(404).send({ message: "Data Not Found!" })
         }
-        res.status(200).send(updateData);
+        res.status(200).send({msg:"Intro Data Updated Successfully"});
     } catch (error) {
-        res.status(500).send("Failed to update data");
+        res.status(500).send("Failed to update intro data");
     }
 }
 
@@ -288,6 +288,7 @@ const getPortfolioData = (async (req, res) => {
 
 const nodemailer = require('nodemailer');
 const { param } = require("../routes/portfolioRoute");
+const { log } = require("util");
 
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,

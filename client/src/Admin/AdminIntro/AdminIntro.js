@@ -34,23 +34,22 @@ const AdminIntro = () => {
     e.preventDefault();
     setButtonLoader(true);
     try {
-      const formData = new FormData();
-
-      formData.append('welcomeText', welcomeText);
-      formData.append('name', name);
-      formData.append('caption', caption);
-      formData.append('resume', resume);
-      axios.put(`${window.location.origin}/api/portfolio/updateIntroData`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Set the correct header
-        }
+      const response =await axios.put(`${window.location.origin}/api/portfolio/updateIntroData`, {
+        welcomeText,
+        name,
+        caption,
+        resume
       });
-      message.success("Intro Updated Successfully", 2)
+      message.success(response.data.msg, 2)
       setTimeout(() => {
         window.location.reload();
       }, 2000);
     } catch (error) {
-      console.log("Failed to upadte the Inro Data");
+      console.log(error);
+      
+      // Ensure you extract the error message properly
+      const errorMessage = error.response?.data?.msg || "An error occurred while updating.";
+      message.error(errorMessage, 2);
     }
   }
 
