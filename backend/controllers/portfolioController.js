@@ -240,14 +240,12 @@ const updateAboutData = async (req, res) => {
 
 //update the intro data
 const updateIntroData = async (req, res) => {
-    const resume = req.file ? req.file.filename : null; // req.file contains the file uploaded by multer
-    const { welcomeText, name, caption } = req.body;
-    console.log(req.file.path);
+    const { welcomeText, name, caption,resume } = req.body;
     
     try {
         const updateData = await Intro.findOneAndUpdate(
             {},// Empty object finds the first document
-            { welcomeText, name, caption, ...(resume && { resume }) },// The fields to update
+            { welcomeText, name, caption,resume},// The fields to update
             { new: true } // Returns the updated document
         )
 

@@ -9,7 +9,7 @@ const AdminIntro = () => {
   const [welcomeText, setWelcomeText] = useState('');
   const [name, setName] = useState('');
   const [caption, setCaption] = useState('');
-  const [resume, setResume] = useState();
+  const [resume, setResume] = useState('');
   const [loading, setLoading] = useState(true);  // Add loading state
   const [buttonLoader, setButtonLoader] = useState(false);
 
@@ -39,11 +39,7 @@ const AdminIntro = () => {
       formData.append('welcomeText', welcomeText);
       formData.append('name', name);
       formData.append('caption', caption);
-
-      if (resume instanceof File) {
-        // Only append the image if a new file is selected
-        formData.append('resume', resume);
-      }
+      formData.append('resume', resume);
       axios.put(`${window.location.origin}/api/portfolio/updateIntroData`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data', // Set the correct header
@@ -82,8 +78,8 @@ const AdminIntro = () => {
               <input type="text" value={caption} onChange={(e) => setCaption(e.target.value)} />
             </div>
             <div className="input-text">
-              <label>Resume:</label>
-              <input type="file" accept='application/pdf' onChange={(e) => setResume(e.target.files[0])} />
+              <label>Resume:<span>(Google Drive Link)</span></label>
+              <input type="text" value={resume} onChange={(e) => setResume(e.target.value)} />
 
             </div>
             <div className="btn-div">

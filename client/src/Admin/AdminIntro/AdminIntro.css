@@ -29,6 +29,10 @@
     width: 30%;
     font-size: 20px;
 }
+.input-text label span{
+    font-size: 10px;
+    color: gray;
+}
 .input-text input{
     width: 40%;
 }
@@ -78,6 +82,10 @@
         width: auto;
         font-size: 12px;
         margin-left: 10px;
+    }
+    .input-text label span{
+        font-size: 6px;
+        color: gray;
     }
     .input-text input{
         width: 60%;

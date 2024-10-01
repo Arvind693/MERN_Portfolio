@@ -7,7 +7,7 @@ const TechStack = () => {
     useEffect(()=>{
         const fetchData = async()=>{
             try {
-                const response = await axios.get(`http://localhost:5000/api/portfolio/get-portfolio-data`);
+                const response = await axios.get(`${window.location.origin}/api/portfolio/get-portfolio-data`);
                 setTechStacks(response.data.techStack)
             } catch (error) {
                 

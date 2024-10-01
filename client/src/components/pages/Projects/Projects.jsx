@@ -6,7 +6,7 @@ const Projects = () => {
     useEffect(()=>{
         const fetchData = async()=>{
             try {
-                const response = await axios.get(`http://localhost:5000/api/portfolio/get-portfolio-data`);
+                const response = await axios.get(`${window.location.origin}/api/portfolio/get-portfolio-data`);
                 setProjects(response.data.project)
             } catch (error) {
                 

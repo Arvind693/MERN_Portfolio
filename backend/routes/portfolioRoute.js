@@ -42,9 +42,6 @@ const cloudinaryStorage = new CloudinaryStorage({
 // Configure multer with Cloudinary storage
 const upload = multer({ storage: cloudinaryStorage });
 
-// Route to update intro data with resume upload to Cloudinary
-router.put('/updateIntroData', upload.single('resume'), updateIntroData);
-
 // Route to update skills with icon upload to Cloudinary
 router.put('/updateSkills/:id', upload.single('icon'), updateSkills);
 router.post('/addNewSkill', upload.single('icon'), addNewSkill);
@@ -55,6 +52,7 @@ router.post('/addNewProject', upload.single('thumbnail'), addNewProject);
 
 router.post('/contact', sendEmail);
 router.get('/get-portfolio-data', getPortfolioData);
+router.put('/updateIntroData',updateIntroData);
 router.put('/updateAboutData', updateAboutData);
 router.post('/addNewEducation', addNewEducation);
 router.delete('/removeEducation/:id', removeEducation);

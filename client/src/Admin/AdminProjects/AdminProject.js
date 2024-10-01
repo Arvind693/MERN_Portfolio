@@ -26,7 +26,7 @@ const AdminProject = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/portfolio/get-portfolio-data`);
+                const response = await axios.get(`${window.location.origin}/api/portfolio/get-portfolio-data`);
                 setProjectData(response.data.project);
                 setLoading(false);  // Stop loading when data is received
             } catch (error) {
@@ -56,7 +56,7 @@ const AdminProject = () => {
     // Open update modal with selected project data
     const handleOpenModal = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/portfolio/getProject/${id}`);
+            const response = await axios.get(`${window.location.origin}/api/portfolio/getProject/${id}`);
             setTitle(response.data.title);
             setDescription(response.data.description);
             setTechnologies(response.data.technologies);
@@ -85,7 +85,7 @@ const AdminProject = () => {
                 formData.append('thumbnail', thumbnail);
             }
 
-            const response = await axios.put(`http://localhost:5000/api/portfolio/updateProject/${idForUpdate}`, formData, {
+            const response = await axios.put(`${window.location.origin}/api/portfolio/updateProject/${idForUpdate}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -103,7 +103,7 @@ const AdminProject = () => {
     // Handle Delete 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/portfolio/removeProject/${id}`);
+            await axios.delete(`${window.location.origin}/api/portfolio/removeProject/${id}`);
             message.success("Project Deleted Successfully",2)
             setTimeout(() => {
                 window.location.reload();
@@ -134,7 +134,7 @@ const AdminProject = () => {
 
         try {
             // Make the POST request to the server to upload the form data
-            const response = await axios.post(`http://localhost:5000/api/portfolio/addNewProject`, formData);
+            const response = await axios.post(`${window.location.origin}/api/portfolio/addNewProject`, formData);
 
             // Handle successful response
             if (response.status === 200) {
