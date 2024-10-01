@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { BsLinkedin, BsGithub } from "react-icons/bs";
-import { FcGoogle } from "react-icons/fc";
-import { ImFacebook2 } from "react-icons/im";
 import "./Contact.css"
 import axios from 'axios';
 const Contact = () => {

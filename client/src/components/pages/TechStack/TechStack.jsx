@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import "./TechStack.css"
-import { useSelector } from 'react-redux';
 import axios from 'axios';
 const TechStack = () => {
     const [techStacks,setTechStacks]=useState([]);

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Projects.css';
-import { useSelector } from 'react-redux';
 import axios from 'axios';
 const Projects = () => {
   const [projects,setProjects]=useState([]);
