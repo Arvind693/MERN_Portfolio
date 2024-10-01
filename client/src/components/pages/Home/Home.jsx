@@ -63,7 +63,7 @@ const Home = () => {
                     rel='noreferrer'
                     target='_blank'>Hire Me
                   </a>
-                  <a className="btn-resume" href={`https://res.cloudinary.com/drbe1wmf4/image/upload/v1727673442/${resume}` || ""} target='_blank'>Resume</a>
+                  <a className="btn-resume" href={resume || ""} target='_blank'>Resume</a>
                 </div>
               </div>
             </div>
