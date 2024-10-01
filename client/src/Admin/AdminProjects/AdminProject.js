@@ -117,10 +117,10 @@ const AdminProject = () => {
     const handleAddProject = () => {
         clearForm();
         setAddPopUpForm(true);
-        setButtonLoader(true);
     };
     const handleUpload = async () => {
         // Create a FormData object
+        setButtonLoader(true)
         const formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
@@ -169,7 +169,7 @@ const AdminProject = () => {
                     </div>
                     <div className="projects-grid-container">
                         {projectData.map((project) => (
-                            <div className='project-container'>
+                            <div className='project-container' key={project._id}>
                                 <div className='tech-icon'>
                                     <img src={`https://res.cloudinary.com/drbe1wmf4/image/upload/v1727673442/${project.thumbnail}`} alt="" />
                                 </div>
@@ -255,7 +255,7 @@ const AdminProject = () => {
                                             Thumbnail:
                                             <input type="file" onChange={(e) => setThumbnail(e.target.files[0])} />
                                         </label>
-                                        <button onClick={handleUpload} disabled={buttonLoader}>{buttonLoader?"Updating...":"Update"}</button>
+                                        <button onClick={handleUpdate} disabled={buttonLoader}>{buttonLoader?"Updating...":"Update"}</button>
                                     </form>
                                 </div>
                             </div>
