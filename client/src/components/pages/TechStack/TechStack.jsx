@@ -26,7 +26,7 @@ const TechStack = () => {
                 </p>
                 <div className="techStcks-row">
                     {techStacks.map((skills) => (
-                        <div className="techStack-content">
+                        <div className="techStack-content" key={skills._id}>
                             <div className='tech-image'>
                                 <img src={`https://res.cloudinary.com/drbe1wmf4/image/upload/v1727673442/${skills.icon}`} alt="icon" />
                             </div>

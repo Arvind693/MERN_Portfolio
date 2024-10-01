@@ -26,6 +26,8 @@ const Educations = () => {
                 <VerticalTimeline>
                    {education.map((education,index)=>(
                     <VerticalTimelineElement
+
+                        key={education._id}
                         className="vertical-timeline-element--education"
                         contentStyle={{ background: 'white', color: 'black' }}
                         contentArrowStyle={{ borderRight: '7px solid  white' }}

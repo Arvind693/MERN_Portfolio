@@ -27,7 +27,7 @@ const Projects = () => {
       {/* card design */}
       <div className="projects-grid">
         {projects.map((project, index) => (
-          <div className="project-card">
+          <div className="project-card" key={project._id}>
             <img src={`https://res.cloudinary.com/drbe1wmf4/image/upload/v1727673442/${project.thumbnail}`} alt="project_img" className='project-image' />
             <div className="project-details">
               <h3 className="project-title">{project.title}</h3>
